@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  backend:
+    container_name: hacker-news-backend
+    build:
+      context: ./hacker-news-api/HackerNewsApi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    restart: unless-stopped
+    networks:
+      - hnnet
+
+  frontend:
+    container_name: hacker-news-frontend
+    build:
+      context: ./hacker-news-ui
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    volumes:
+      - ./.docker/config.js:/usr/share/nginx/html/assets/config.js
+      - ./.docker/nginx.conf:/etc/nginx/conf.d/default.conf
+    restart: unless-stopped
+    networks:
+      - hnnet
+
+networks:
+  hnnet:
+    name: hnnet
+    driver: bridge

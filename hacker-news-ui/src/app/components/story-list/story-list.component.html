@@ -1,0 +1,21 @@
+<div class="story-list">
+  <input type="text" placeholder="Search stories..." [(ngModel)]="searchTerm" (input)="onSearch(searchTerm)"
+    class="search-box" />
+
+  <div *ngIf="loading">Loading...</div>
+
+  <ul *ngIf="!loading">
+    <li *ngFor="let story of stories">
+      <span *ngIf="story.title">{{ story.title }}</span>
+      <a *ngIf="story.url" [href]="story.url" target="_blank" rel="noopener">🔗</a>
+    </li>
+  </ul>
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="page === 1">Previous</button>
+    <span class="pagination-summary" *ngIf="!loading">
+      Page {{ page }}
+    </span>
+    <button (click)="nextPage()">Next</button>
+  </div>
+</div>

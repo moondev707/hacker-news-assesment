@@ -1,0 +1,13 @@
+bin/
+obj/
+*.md
+*.user
+*.vs
+.vscode/
+.git/
+.gitignore
+Dockerfile
+docker-compose.yml
+.env
+TestResults/
+node_modules/ 
