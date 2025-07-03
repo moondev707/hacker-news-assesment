@@ -15,7 +15,7 @@ import { debounceTime } from 'rxjs/operators';
 export class StoryListComponent implements OnInit, OnDestroy {
   stories: StoryDto[] = [];
   page = 1;
-  pageSize = 40;
+  pageSize = 20;
   searchTerm = '';
   loading = false;
 
@@ -27,7 +27,7 @@ export class StoryListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.fetchStories();
     this.searchSub = this.searchSubject.pipe(
-      debounceTime(3000)
+      debounceTime(2000)
     ).subscribe(term => {
       this.searchTerm = term;
       this.page = 1;

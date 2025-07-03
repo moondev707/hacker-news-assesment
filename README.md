@@ -1,5 +1,9 @@
 # Hacker News Platform
 
+![Preview of the Hacker News Platform](preview.png)
+
+*A preview of the full-stack Hacker News clone UI.*
+
 This project is a full-stack Hacker News clone, featuring:
 - **Backend:** ASP.NET Core Web API
 - **Frontend:** Angular (served via Nginx)
